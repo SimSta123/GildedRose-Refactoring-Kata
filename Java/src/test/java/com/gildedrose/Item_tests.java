@@ -9,12 +9,11 @@ public class Item_tests {
     void nameTest() {
         Item[] items = new Item[]{new Item("sword", 0, 0)};
         GildedRose app = new GildedRose(items);
-        app.updateQuality();
         assertEquals("sword", app.items[0].name);
     }
 
     @Test
-    void qualityLowerThanSellIn() {
+    void qualityLowerThanSellInOver3Updates() {
         Item[] items = new Item[]{new Item("sword", 3, 10)};
         GildedRose app = new GildedRose(items);
         for(int i = 3; i > 0; i--) {
@@ -25,7 +24,7 @@ public class Item_tests {
     }
 
     @Test
-    void qualityHigherThanSellIn() {
+    void qualityHigherThanSellInOver3Updates() {
         Item[] items = new Item[]{new Item("sword", 3, 2)};
         GildedRose app = new GildedRose(items);
         for(int i = 3; i > 0; i--) {
@@ -36,7 +35,7 @@ public class Item_tests {
     }
 
     @Test
-    void qualityEqualToSellIn() {
+    void qualityEqualToSellInOver3Updates() {
         Item[] items = new Item[]{new Item("sword", 3, 3)};
         GildedRose app = new GildedRose(items);
         for(int i = 3; i > 0; i--) {
