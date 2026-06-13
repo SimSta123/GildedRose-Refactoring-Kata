@@ -1,9 +1,11 @@
 package com.gildedrose;
 
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BackstagePassesTest {
+
     @Test
     void backstagePassesRegisterTest() {
         Item[] items = new Item[]{new Item("Backstage passes to a TAFKAL80ETC concert", 15, 20)};
