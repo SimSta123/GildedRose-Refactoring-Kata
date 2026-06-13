@@ -43,12 +43,9 @@ public class BackstagePassesTest {
 
     @Test
     void backstagePassesQualityZeroSellInNegativeTest() {
-        Item[] items = new Item[]{new Item("Backstage passes to a TAFKAL80ETC concert", 14, 20)};
+        Item[] items = new Item[]{new Item("Backstage passes to a TAFKAL80ETC concert", 0, 20)};
         GildedRose app = new GildedRose(items);
-        for(int sellIn = 15; sellIn > 0; sellIn--){
-            app.updateQuality();
-        }
-        //sellIn < 0: quality = 0
+        app.updateQuality();
         assertEquals(0, app.items[0].quality);
     }
 
@@ -59,7 +56,7 @@ public class BackstagePassesTest {
         for(int sellIn = 5; sellIn > 0; sellIn--){
             app.updateQuality();
         }
-        //15 sellIn 1-5: +3
+        //15 Weil sellIn 1-5: +3
         assertEquals(15, app.items[0].quality);
     }
 
@@ -86,7 +83,7 @@ public class BackstagePassesTest {
     }
 
     @Test
-    void backstagePassesMaxQuality() {
+    void backstagePassesMaxQualityNoBiggerThan50() {
         Item[] items = new Item[]{new Item("Backstage passes to a TAFKAL80ETC concert", 70, 0)};
         GildedRose app = new GildedRose(items);
         for(int sellIn = 70; sellIn > 0; sellIn--){

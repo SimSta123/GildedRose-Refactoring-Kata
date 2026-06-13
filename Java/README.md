@@ -28,3 +28,24 @@ The other relies on your CLASSPATH being set correctly in [environment.gr](../te
 
     executable:com.gildedrose.TexttestFixture
     interpreter:java
+
+## Teststrategy
+
+Wir haben pro NamedItem eine Testfile gemacht sowie auch ein Testfile für unnamed generic Items.
+Die Special Rules sowie allgemeine sachen wurden alle mit Tests getestet.
+
+Special rules:
+
+Normale Items verlieren pro Tag 1 Qualität.
+Normale Items verlieren nach Ablauf des Verkaufsdatums doppelt so schnell Qualität.
+Qualität darf nie negativ werden.
+Aged Brie gewinnt mit der Zeit an Qualität.
+Backstage Passes steigen stärker im Wert, je näher das Konzert kommt.
+Backstage Passes fallen nach dem Konzert auf Qualität 0.
+Sulfuras verändert weder sellIn noch quality.
+Qualität darf nie über 50 steigen, außer bei Sulfuras mit fixer Qualität 80.
+
+Die größte Schwierigkeit war die einzelnen Rules der items mit Namen herausfinden.
+
+
+
