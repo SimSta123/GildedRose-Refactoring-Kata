@@ -16,28 +16,19 @@ class GildedRose {
     public void updateQuality() {
         for (Item item : items) {
             if (!item.name.equals(AGED_BRIE)
-                    && !item.name.equals(BACKSTAGE_PASSES)) {
-                if (item.quality > MIN_QUALITY) {
-                    if (!item.name.equals(SULFURAS)) {
-                        item.quality = item.quality - 1;
-                    }
+                && !item.name.equals(BACKSTAGE_PASSES)) {
+                if (!item.name.equals(SULFURAS)) {
+                    decreaseQuality(item);
                 }
             } else {
-                if (item.quality < MAX_QUALITY) {
-                    item.quality = item.quality + 1;
+                increaseQuality(item);
+                if (item.name.equals(BACKSTAGE_PASSES)) {
+                    if (item.sellIn < 11) {
+                        increaseQuality(item);
+                    }
 
-                    if (item.name.equals(BACKSTAGE_PASSES)) {
-                        if (item.sellIn < 11) {
-                            if (item.quality < MAX_QUALITY) {
-                                item.quality = item.quality + 1;
-                            }
-                        }
-
-                        if (item.sellIn < 6) {
-                            if (item.quality < MAX_QUALITY) {
-                                item.quality = item.quality + 1;
-                            }
-                        }
+                    if (item.sellIn < 6) {
+                        increaseQuality(item);
                     }
                 }
             }
@@ -49,25 +40,33 @@ class GildedRose {
             if (item.sellIn < MIN_QUALITY) {
                 if (!item.name.equals(AGED_BRIE)) {
                     if (!item.name.equals(BACKSTAGE_PASSES)) {
-                        if (item.quality > MIN_QUALITY) {
-                            if (!item.name.equals(SULFURAS)) {
-                                item.quality = item.quality - 1;
-                            }
+                        if (!item.name.equals(SULFURAS)) {
+                            decreaseQuality(item);
                         }
                     } else {
                         item.quality = item.quality - item.quality;
                     }
                 } else {
-                    if (item.quality < MAX_QUALITY) {
-                        item.quality = item.quality + 1;
-                    }
+                    increaseQuality(item);
                 }
             }
         }
     }
 
-    private void updateItem(Item item){
-        if(!item.name.equals(AGED_BRIE) && !item.name.equals(BACKSTAGE_PASSES)){
+    private void increaseQuality(Item item) {
+        if (item.quality < MAX_QUALITY) {
+            item.quality++;
+        }
+    }
+
+    private void decreaseQuality(Item item) {
+        if (item.quality > MIN_QUALITY) {
+            item.quality--;
+        }
+    }
+
+    private void updateItem(Item item) {
+        if (!item.name.equals(AGED_BRIE) && !item.name.equals(BACKSTAGE_PASSES)) {
 
         }
     }
