@@ -19,6 +19,9 @@ class GildedRose {
             // Sulfuras never changes
             if (item.name.equals(SULFURAS)) {
                 return;
+            }else if(item.name.equals(AGED_BRIE)){
+                updateAgedBrie(item);
+                return;
             }
 
             if (!item.name.equals(AGED_BRIE)
@@ -67,6 +70,14 @@ class GildedRose {
     private void updateItem(Item item) {
         if (!item.name.equals(AGED_BRIE) && !item.name.equals(BACKSTAGE_PASSES)) {
 
+        }
+    }
+
+    private void updateAgedBrie(Item item){
+        increaseQuality(item);
+        item.sellIn = item.sellIn - 1;
+        if (item.sellIn < MIN_QUALITY) {
+            increaseQuality(item);
         }
     }
 }
