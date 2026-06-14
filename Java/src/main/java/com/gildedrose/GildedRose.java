@@ -18,13 +18,10 @@ class GildedRose {
         for (Item item : items) {
             // Sulfuras never changes
             if (item.name.equals(SULFURAS)) {
-                return;
             } else if (item.name.equals(AGED_BRIE)) {
                 updateAgedBrie(item);
-                return;
             } else if (item.name.equals(BACKSTAGE_PASSES)) {
                 updateBackstagePasses(item);
-                return;
             } else {
                 updateRegularItem(item);
             }
