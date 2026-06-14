@@ -19,25 +19,17 @@ class GildedRose {
             // Sulfuras never changes
             if (item.name.equals(SULFURAS)) {
                 return;
-            }else if(item.name.equals(AGED_BRIE)){
+            } else if (item.name.equals(AGED_BRIE)) {
                 updateAgedBrie(item);
+                return;
+            } else if (item.name.equals(BACKSTAGE_PASSES)) {
+                updateBackstagePasses(item);
                 return;
             }
 
             if (!item.name.equals(AGED_BRIE)
                 && !item.name.equals(BACKSTAGE_PASSES)) {
                 decreaseQuality(item);
-            } else {
-                increaseQuality(item);
-                if (item.name.equals(BACKSTAGE_PASSES)) {
-                    if (item.sellIn < 11) {
-                        increaseQuality(item);
-                    }
-
-                    if (item.sellIn < 6) {
-                        increaseQuality(item);
-                    }
-                }
             }
             item.sellIn = item.sellIn - 1;
 
@@ -45,11 +37,7 @@ class GildedRose {
                 if (!item.name.equals(AGED_BRIE)) {
                     if (!item.name.equals(BACKSTAGE_PASSES)) {
                         decreaseQuality(item);
-                    } else {
-                        item.quality = item.quality - item.quality;
                     }
-                } else {
-                    increaseQuality(item);
                 }
             }
         }
@@ -73,11 +61,26 @@ class GildedRose {
         }
     }
 
-    private void updateAgedBrie(Item item){
+    private void updateAgedBrie(Item item) {
         increaseQuality(item);
         item.sellIn = item.sellIn - 1;
         if (item.sellIn < MIN_QUALITY) {
             increaseQuality(item);
+        }
+    }
+
+    private void updateBackstagePasses(Item item) {
+        increaseQuality(item);
+        item.sellIn = item.sellIn - 1;
+
+        if (item.sellIn < 11) {
+            increaseQuality(item);
+            if (item.sellIn < 6) {
+                increaseQuality(item);
+            }
+        }
+        if (item.sellIn < MIN_QUALITY) {
+            item.quality = item.quality - item.quality;
         }
     }
 }
