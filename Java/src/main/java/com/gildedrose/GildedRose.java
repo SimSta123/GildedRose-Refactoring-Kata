@@ -40,12 +40,6 @@ class GildedRose {
         }
     }
 
-    private void updateItem(Item item) {
-        if (!item.name.equals(AGED_BRIE) && !item.name.equals(BACKSTAGE_PASSES)) {
-
-        }
-    }
-
     private void updateAgedBrie(Item item) {
         increaseQuality(item);
         item.sellIn = item.sellIn - 1;
